@@ -1,1 +1,1 @@
-export {};
+export { IArea, fetchAreaById } from "./area";
