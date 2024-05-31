@@ -14,10 +14,5 @@ export const useMetersBoard = ({ limit }: { limit: number }) => {
     setPage(selected);
   };
 
-  // const handleDelete = (id: string) => {
-  //   deleteMeterById(id).then((res) => console.log(res));
-  //   meterStore.fetchMetersPage({ limit: limit, offset: limit * page });
-  // };
-
   return { page, handlePageClick };
 };

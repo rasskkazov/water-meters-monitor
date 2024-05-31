@@ -1,22 +1,14 @@
 import { observer } from "mobx-react";
-import { useQuery } from "@tanstack/react-query";
+import { Pagination } from "@/features";
+import { meterStore } from "@/entities";
 
-import { DeleteMeter, Pagination } from "@/features";
-import { TArea, fetchAreaById, meterStore } from "@/entities";
-import { PaginationResponse } from "@/shared/api/types";
+import { MeterCard } from "./MetersCard/ui/MeterCard";
 import { useMetersBoard } from "../lib/useMetersBoard";
 
 const limit = 20;
 
 export const MetersBoard = observer(() => {
-  const { page, handlePageClick } = useMetersBoard({ limit: 20 });
-
-  // const useArea = (id: string) => {
-  //   const { data, isLoading } = useQuery<TArea>({
-  //     queryKey: ["526237d1e0e34c524382c074"],
-  //     queryFn: () => fetchAreaById("526237d1e0e34c524382c074"),
-  //   });
-  // };
+  const { page, handlePageClick } = useMetersBoard({ limit });
 
   return (
     <div className="metersBoard">
@@ -26,13 +18,11 @@ export const MetersBoard = observer(() => {
           <>
             {meterStore.meters.map((meter) => (
               <div key={meter.id}>
-                <div>{meter.id}</div>
-                <DeleteMeter
-                  id={meter.id}
+                <MeterCard
+                  id={meter.area.id}
                   limit={limit}
                   offset={page * limit}
                 />
-                <div className="area">{meter.area.id}</div>
               </div>
             ))}
           </>
