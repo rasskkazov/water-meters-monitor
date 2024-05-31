@@ -1,30 +1,67 @@
 import { DeleteMeter } from "@/features";
+import Water from "@/shared/assets/svg/water.svg";
+import { stringToRussianDate } from "@/shared/lib/stringToRussianDate";
 
-import { useArea } from "../../../lib/useArea";
+import { useArea } from "../../../model/useArea";
+import * as classes from "./MeterCard.module.scss";
+
+const MeterTypes = {
+  HotWaterAreaMeter: "ГВС",
+  ColdWaterAreaMeter: "ХВС",
+};
+const MeterTypesIconsColor = {
+  HotWaterAreaMeter: "#F46B4D",
+  ColdWaterAreaMeter: "#3698FA",
+};
+enum isAutomaticIndicator {
+  auto = "да",
+  manual = "нет",
+}
 
 export const MeterCard = ({
   meterId,
   areaId,
   limit,
   offset,
+  orderNumber,
+  type,
+  date,
+  isAutomatic,
+  initVal,
+  description,
 }: {
   meterId: string;
   areaId: string;
   limit: number;
   offset: number;
+  orderNumber: number;
+  type: string;
+  date: string;
+  isAutomatic: boolean;
+  initVal: string;
+  description: string;
 }) => {
   const { data, isLoading } = useArea(areaId);
 
+  if (isLoading) return <div className={classes.meterCard}>Загрузка...</div>;
+
   return (
-    <div className="meterCard">
-      {isLoading && <div>Загрузка...</div>}
-      {!isLoading && (
-        <>
-          <div className="number">{meterId}</div>
-          <div className="address">{data.house.address}</div>
-          <DeleteMeter id={meterId} limit={limit} offset={offset} />
-        </>
-      )}
+    <div className={classes.meterCard}>
+      <div className="meterCard__orderNumber">{orderNumber}</div>
+      <div className="meterCard__type">
+        <Water color={MeterTypesIconsColor[type as keyof typeof MeterTypes]} />
+        {MeterTypes[type as keyof typeof MeterTypes]}
+      </div>
+      <div className="meterCard__data">{stringToRussianDate(date)}</div>
+      <div className="meterCard__isAutomatic">
+        {isAutomatic ? isAutomaticIndicator.auto : isAutomaticIndicator.manual}
+      </div>
+      <div className="meterCard__initVal">{initVal}</div>
+      <div className="meterCard__address">
+        {`${data.house.address} ${data.str_number_full}`}
+      </div>
+      <div className="meterCard__description">{description}</div>
+      <DeleteMeter id={meterId} limit={limit} offset={offset} />
     </div>
   );
 };
