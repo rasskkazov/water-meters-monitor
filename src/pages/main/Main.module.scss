@@ -1,6 +1,10 @@
 @import "@/shared/styles";
 
-.container {
-  padding: 0 5.6rem;
-  background-color: $grey;
+.content {
+  padding: 1.6rem;
+
+  h1 {
+    margin: 0;
+    font-size: 2.4rem;
+  }
 }

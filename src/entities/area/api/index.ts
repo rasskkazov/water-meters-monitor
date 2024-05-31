@@ -1,7 +1,6 @@
 import { PaginationResponse } from "@/shared/api/types";
 import { axiosInstance } from "@/shared/api/axiosInstance";
-
-import { IArea } from "../model/type";
+import { TArea } from "../model/type";
 
 const options = {
   method: "GET",
@@ -12,7 +11,7 @@ const options = {
 
 export const fetchAreaById = (id: string) => {
   return axiosInstance
-    .get<PaginationResponse<IArea>>("areas/", {
+    .get<PaginationResponse<TArea>>("areas/", {
       ...options,
       params: {
         id__in: id,

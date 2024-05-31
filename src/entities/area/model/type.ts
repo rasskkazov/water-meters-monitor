@@ -1,4 +1,11 @@
-import { Instance } from "mobx-state-tree";
-import { AreaModel } from "@/shared/model/Area";
-
-export interface IArea extends Instance<typeof AreaModel> {}
+export type TArea = {
+  id: string;
+  number: number;
+  str_number: string;
+  str_number_full: string;
+  house: {
+    address: string;
+    id: string;
+    fias_addrobjs: string[];
+  };
+};

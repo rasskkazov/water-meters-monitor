@@ -1,0 +1,44 @@
+@import "@/shared/styles";
+
+.pagination {
+  display: inline-flex;
+  gap: 1rem;
+  justify-content: center;
+
+  &__pageLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    font-size: 1.4rem;
+    border: 1px solid $grey300;
+    border-radius: 0.6rem;
+    user-select: none;
+
+    @include hover() {
+      background-color: $grey100;
+      cursor: pointer;
+    }
+  }
+
+  &__pageLinkActive {
+    background-color: $grey100;
+  }
+
+  &__breakLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    font-size: 1.4rem;
+    border: 1px solid $grey300;
+    border-radius: 0.6rem;
+
+    @include hover() {
+      background-color: $grey100;
+      cursor: pointer;
+    }
+  }
+}

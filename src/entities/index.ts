@@ -1,3 +1,3 @@
-export { IArea, fetchAreaById } from "./area";
+export { fetchAreaById, TArea } from "./area";
 
-export { meterStore, IMeter, fetchMeters } from "./meter";
+export { meterStore, IMeter, fetchMeters, deleteMeterById } from "./meter";

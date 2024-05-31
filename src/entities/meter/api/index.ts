@@ -3,25 +3,35 @@ import { axiosInstance } from "@/shared/api/axiosInstance";
 
 import { IMeter } from "../model/type";
 
-const options = {
+const getOptions = {
   method: "GET",
   headers: {
     accept: "application/json",
   },
 };
 
-export interface IFetchMetersProps {
+export const fetchMeters = (props: {
   params: {
     limit: number;
     offset: number;
   };
-}
-
-export const fetchMeters = (props: IFetchMetersProps) => {
+}) => {
   return axiosInstance
     .get<PaginationResponse<IMeter>>("meters/", {
-      ...options,
+      ...getOptions,
       ...props,
     })
     .then((res) => res.data);
+};
+
+export const deleteMeterById = (id: string) => {
+  return axiosInstance
+    .delete(`meters/${id}`)
+    .then((response) => {
+      console.log(response);
+      console.log(`Deleted post with ID ${id}`);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };

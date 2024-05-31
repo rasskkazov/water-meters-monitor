@@ -1,0 +1,34 @@
+@import "@/shared/styles";
+
+.deleteMeter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: $danger-lighter;
+  border: none;
+  border-radius: 0.8rem;
+
+  svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: $danger;
+  }
+
+  @include hover() {
+    background-color: $danger-light;
+
+    svg {
+      color: $danger-dark;
+    }
+  }
+
+  @include active() {
+    background-color: inherit;
+
+    svg {
+      color: $grey400;
+    }
+  }
+}

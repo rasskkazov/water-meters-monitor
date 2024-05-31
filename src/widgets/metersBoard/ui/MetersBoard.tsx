@@ -1,41 +1,48 @@
 import { observer } from "mobx-react";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
-import { IMeter, fetchMeters, meterStore } from "@/entities";
+
+import { DeleteMeter, Pagination } from "@/features";
+import { TArea, fetchAreaById, meterStore } from "@/entities";
 import { PaginationResponse } from "@/shared/api/types";
+import { useMetersBoard } from "../lib/useMetersBoard";
+
+const limit = 20;
 
 export const MetersBoard = observer(() => {
-  const { data, isLoading } = useQuery<PaginationResponse<IMeter>>({
-    queryKey: [],
-    queryFn: () =>
-      fetchMeters({
-        params: {
-          limit: 20,
-          offset: 0,
-        },
-      }),
-  });
+  const { page, handlePageClick } = useMetersBoard({ limit: 20 });
 
-  useEffect(() => {
-    if (!isLoading) {
-      meterStore.appendMeters(data.results);
-    }
-  }, [isLoading]);
+  // const useArea = (id: string) => {
+  //   const { data, isLoading } = useQuery<TArea>({
+  //     queryKey: ["526237d1e0e34c524382c074"],
+  //     queryFn: () => fetchAreaById("526237d1e0e34c524382c074"),
+  //   });
+  // };
 
   return (
     <div className="metersBoard">
-      <div className="headers">Headers</div>
-      <div className="headers">
-        {meterStore.meters.map((meter) => (
-          <div key={meter.id}>{meter.id}</div>
-        ))}
-        <button
-          onClick={() => {
-            meterStore.removeMeterById("526a0caae0e34c3e6dda9a9b");
-          }}
-        >
-          Remove
-        </button>
+      {!meterStore.isDataReady && <div>Загрузка...</div>}
+      <div className="content">
+        {meterStore.isDataReady && (
+          <>
+            {meterStore.meters.map((meter) => (
+              <div key={meter.id}>
+                <div>{meter.id}</div>
+                <DeleteMeter
+                  id={meter.id}
+                  limit={limit}
+                  offset={page * limit}
+                />
+                <div className="area">{meter.area.id}</div>
+              </div>
+            ))}
+          </>
+        )}
+        {meterStore.isCountReady && (
+          <Pagination
+            count={Math.ceil(meterStore.count / limit)}
+            handlePageClick={handlePageClick}
+          />
+        )}
       </div>
     </div>
   );

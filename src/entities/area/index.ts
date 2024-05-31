@@ -1,2 +1,2 @@
-export { IArea } from "./model/type";
+export { TArea } from "./model/type";
 export { fetchAreaById } from "./api";
