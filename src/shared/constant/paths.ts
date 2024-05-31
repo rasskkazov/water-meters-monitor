@@ -1,3 +1,3 @@
 export enum paths {
-  MAIN = "/",
+  MAIN = '/',
 }

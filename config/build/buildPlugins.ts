@@ -1,23 +1,23 @@
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { EnvironmentPlugin } from "webpack";
-import { Configuration } from "webpack";
-import { BuildOptions } from "./types/types";
-import { envVars } from "../env/variables";
-import path from "path";
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { EnvironmentPlugin } from 'webpack';
+import { Configuration } from 'webpack';
+import { BuildOptions } from './types/types';
+import { envVars } from '../env/variables';
+import path from 'path';
 
 export function buildPlugins({
   mode,
   paths,
-}: BuildOptions): Configuration["plugins"] {
-  const isProd = mode === "production";
+}: BuildOptions): Configuration['plugins'] {
+  const isProd = mode === 'production';
 
-  const plugins: Configuration["plugins"] = [];
+  const plugins: Configuration['plugins'] = [];
 
   plugins.push(
     new HtmlWebpackPlugin({
       template: paths.html,
-      favicon: path.resolve(paths.public, "favicon.ico"),
+      favicon: path.resolve(paths.public, 'favicon.ico'),
     }),
     new EnvironmentPlugin(envVars)
   );
@@ -25,8 +25,8 @@ export function buildPlugins({
   if (isProd) {
     plugins.push(
       new MiniCssExtractPlugin({
-        filename: "css/[name].[contenthash].css",
-        chunkFilename: "css/[name].[contenthash].css",
+        filename: 'css/[name].[contenthash].css',
+        chunkFilename: 'css/[name].[contenthash].css',
       })
     );
   }

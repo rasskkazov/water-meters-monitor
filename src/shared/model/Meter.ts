@@ -1,7 +1,7 @@
-import { t } from "mobx-state-tree";
-import { AreaModel } from "./Area";
+import { t } from 'mobx-state-tree';
+import { AreaModel } from './Area';
 
-export const MeterModel = t.model("Meter", {
+export const MeterModel = t.model('Meter', {
   id: t.identifier,
   _type: t.array(t.string),
   area: AreaModel,

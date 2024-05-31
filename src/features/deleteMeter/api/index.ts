@@ -1,4 +1,4 @@
-import { deleteMeterById, meterStore } from "@/entities";
+import { deleteMeterById, meterStore } from '@/entities';
 
 export const handleDelete = ({
   id,

@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { meterStore } from "@/entities";
+import { useState, useEffect } from 'react';
+import { meterStore } from '@/entities';
 
 export const useMetersBoard = ({ limit }: { limit: number }) => {
   const [page, setPage] = useState(0);

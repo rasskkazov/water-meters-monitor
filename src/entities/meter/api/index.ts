@@ -1,12 +1,12 @@
-import { PaginationResponse } from "@/shared/api/types";
-import { axiosInstance } from "@/shared/api/axiosInstance";
+import { PaginationResponse } from '@/shared/api/types';
+import { axiosInstance } from '@/shared/api/axiosInstance';
 
-import { IMeter } from "../model/type";
+import { IMeter } from '../model/type';
 
 const getOptions = {
-  method: "GET",
+  method: 'GET',
   headers: {
-    accept: "application/json",
+    accept: 'application/json',
   },
 };
 
@@ -17,7 +17,7 @@ export const fetchMetersPage = (props: {
   };
 }) => {
   return axiosInstance
-    .get<PaginationResponse<IMeter>>("meters/", {
+    .get<PaginationResponse<IMeter>>('meters/', {
       ...getOptions,
       ...props,
     })

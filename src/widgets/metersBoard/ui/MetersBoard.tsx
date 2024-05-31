@@ -1,10 +1,10 @@
-import { observer } from "mobx-react";
-import { Pagination } from "@/features";
-import { meterStore } from "@/entities";
+import { observer } from 'mobx-react';
+import { Pagination } from '@/features';
+import { meterStore } from '@/entities';
 
-import { MeterCard } from "./MetersCard/ui/MeterCard";
-import { useMetersBoard } from "../model/useMetersBoard";
-import * as classes from "./MeterBoard.module.scss";
+import { MeterCard } from './MetersCard/ui/MeterCard';
+import { useMetersBoard } from '../model/useMetersBoard';
+import * as classes from './MeterBoard.module.scss';
 
 const limit = 20;
 

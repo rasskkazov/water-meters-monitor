@@ -1,18 +1,18 @@
-import { PaginationResponse } from "@/shared/api/types";
-import { axiosInstance } from "@/shared/api/axiosInstance";
+import { PaginationResponse } from '@/shared/api/types';
+import { axiosInstance } from '@/shared/api/axiosInstance';
 
-import { TArea } from "../model/type";
+import { TArea } from '../model/type';
 
 const options = {
-  method: "GET",
+  method: 'GET',
   headers: {
-    accept: "application/json",
+    accept: 'application/json',
   },
 };
 
 export const fetchAreaById = (id: string) => {
   return axiosInstance
-    .get<PaginationResponse<TArea>>("areas/", {
+    .get<PaginationResponse<TArea>>('areas/', {
       ...options,
       params: {
         id__in: id,

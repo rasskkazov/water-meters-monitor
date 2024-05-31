@@ -1,6 +1,6 @@
-import ReactPaginate from "react-paginate";
+import ReactPaginate from 'react-paginate';
 
-import * as classes from "./Pagination.module.scss";
+import * as classes from './Pagination.module.scss';
 
 export const Pagination = ({
   count,

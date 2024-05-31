@@ -1,7 +1,7 @@
-import { observer } from "mobx-react";
-import { MetersBoard } from "@/widgets";
+import { observer } from 'mobx-react';
+import { MetersBoard } from '@/widgets';
 
-import * as classes from "./Main.module.scss";
+import * as classes from './Main.module.scss';
 
 export const Main = () => {
   return (

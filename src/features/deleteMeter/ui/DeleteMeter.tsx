@@ -1,7 +1,7 @@
-import Trash from "@/shared/assets/svg/trash.svg";
+import Trash from '@/shared/assets/svg/trash.svg';
 
-import { handleDelete } from "../api";
-import * as classes from "./DeleteMeter.module.scss";
+import { handleDelete } from '../api';
+import * as classes from './DeleteMeter.module.scss';
 
 export const DeleteMeter = ({
   id,

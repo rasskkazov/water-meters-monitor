@@ -1,10 +1,10 @@
-import { t, flow } from "mobx-state-tree";
-import { MeterModel } from "@/shared/model/Meter";
+import { t, flow } from 'mobx-state-tree';
+import { MeterModel } from '@/shared/model/Meter';
 
-import { fetchMetersPage } from "../api";
+import { fetchMetersPage } from '../api';
 
 const MeterStore = t
-  .model("MeterStore", {
+  .model('MeterStore', {
     meters: t.array(MeterModel),
     count: t.number,
     isDataReady: t.boolean,

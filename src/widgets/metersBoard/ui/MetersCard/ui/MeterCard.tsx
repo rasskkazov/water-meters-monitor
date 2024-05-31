@@ -1,22 +1,22 @@
-import { DeleteMeter } from "@/features";
-import Water from "@/shared/assets/svg/water.svg";
-import { stringToRussianDate } from "@/shared/lib/stringToRussianDate";
+import { DeleteMeter } from '@/features';
+import Water from '@/shared/assets/svg/water.svg';
+import { stringToRussianDate } from '@/shared/lib/stringToRussianDate';
 
-import { useArea } from "../../../model/useArea";
-import * as classes from "./MeterCard.module.scss";
-import { useState } from "react";
+import { useArea } from '../../../model/useArea';
+import * as classes from './MeterCard.module.scss';
+import { useState } from 'react';
 
 const MeterTypes = {
-  HotWaterAreaMeter: "ГВС",
-  ColdWaterAreaMeter: "ХВС",
+  HotWaterAreaMeter: 'ГВС',
+  ColdWaterAreaMeter: 'ХВС',
 };
 const MeterTypesIconsColor = {
-  HotWaterAreaMeter: "#F46B4D",
-  ColdWaterAreaMeter: "#3698FA",
+  HotWaterAreaMeter: '#F46B4D',
+  ColdWaterAreaMeter: '#3698FA',
 };
 enum isAutomaticIndicator {
-  auto = "да",
-  manual = "нет",
+  auto = 'да',
+  manual = 'нет',
 }
 
 export const MeterCard = ({
@@ -67,7 +67,7 @@ export const MeterCard = ({
       </div>
       <div className={classes.meterCard__description}>{description}</div>
       <div
-        className={`${classes.meterCard__del}${delVisible ? "--visible" : ""}`}
+        className={`${classes.meterCard__del}${delVisible ? '--visible' : ''}`}
       >
         <DeleteMeter id={meterId} limit={limit} offset={offset} />
       </div>

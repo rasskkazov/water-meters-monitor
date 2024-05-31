@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
-import * as classes from "./Root.module.scss";
+import * as classes from './Root.module.scss';
 
 export const Root = () => {
   return (

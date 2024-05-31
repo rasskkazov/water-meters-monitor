@@ -1,15 +1,15 @@
-import { ModuleOptions } from "webpack";
-import { BuildOptions } from "./types/types";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { ModuleOptions } from 'webpack';
+import { BuildOptions } from './types/types';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export function buildLoaders({ mode }: BuildOptions): ModuleOptions["rules"] {
-  const isDev = mode === "development";
+export function buildLoaders({ mode }: BuildOptions): ModuleOptions['rules'] {
+  const isDev = mode === 'development';
 
   const cssLoaderWithModules = {
-    loader: "css-loader",
+    loader: 'css-loader',
     options: {
       modules: {
-        localIdentName: isDev ? "[path][name]__[local]" : "[hash:base64:8]",
+        localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
       },
     },
   };
@@ -17,21 +17,21 @@ export function buildLoaders({ mode }: BuildOptions): ModuleOptions["rules"] {
   const cssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
-      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       cssLoaderWithModules,
-      "sass-loader",
+      'sass-loader',
     ],
   };
 
   const tsLoader = {
     test: /\.tsx?$/,
-    use: "ts-loader",
+    use: 'ts-loader',
     exclude: /node_modules/,
   };
 
   const assetLoader = {
     test: /\.(png|jpe?g|gif|webp)$/i,
-    type: "asset/resource",
+    type: 'asset/resource',
   };
 
   const svgLoader = {
@@ -39,13 +39,13 @@ export function buildLoaders({ mode }: BuildOptions): ModuleOptions["rules"] {
     issuer: /\.[jt]sx?$/,
     use: [
       {
-        loader: "@svgr/webpack",
+        loader: '@svgr/webpack',
         options: {
           icon: true,
           svgoConfig: {
             plugins: [
               {
-                name: "convertColors",
+                name: 'convertColors',
                 params: {
                   currentColor: true,
                 },
