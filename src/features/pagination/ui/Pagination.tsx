@@ -1,7 +1,6 @@
 import ReactPaginate from "react-paginate";
 
 import * as classes from "./Pagination.module.scss";
-import { count } from "console";
 
 export const Pagination = ({
   count,
@@ -24,8 +23,8 @@ export const Pagination = ({
         renderOnZeroPageCount={null}
         containerClassName={classes.pagination}
         pageLinkClassName={classes.pagination__pageLink}
+        breakLinkClassName={classes.pagination__pageLink}
         activeLinkClassName={classes.pagination__pageLinkActive}
-        breakLinkClassName={classes.pagination__breakLink}
       />
     </nav>
   );

@@ -1,8 +1,7 @@
-import { t, Instance, flow } from "mobx-state-tree";
-import { AreaModel } from "@/shared/model/Area";
+import { t, flow } from "mobx-state-tree";
 import { MeterModel } from "@/shared/model/Meter";
-import { IMeter } from "./type";
-import { fetchMeters } from "../api";
+
+import { fetchMetersPage } from "../api";
 
 const MeterStore = t
   .model("MeterStore", {
@@ -12,13 +11,13 @@ const MeterStore = t
     isCountReady: t.boolean,
   })
   .actions((self) => ({
-    fetchMetersPage: flow(function* (params: {
+    updateMetersPage: flow(function* (params: {
       limit: number;
       offset: number;
     }) {
       self.isDataReady = false;
       try {
-        self.meters = yield fetchMeters({ params }).then(
+        self.meters = yield fetchMetersPage({ params }).then(
           (data) => data.results
         );
       } catch (e) {
@@ -30,7 +29,9 @@ const MeterStore = t
     init: flow(function* (params: { limit: number; offset: number }) {
       self.isCountReady = false;
       try {
-        self.count = yield fetchMeters({ params }).then((data) => data.count);
+        self.count = yield fetchMetersPage({ params }).then(
+          (data) => data.count
+        );
       } catch (e) {
         console.error(e);
       } finally {

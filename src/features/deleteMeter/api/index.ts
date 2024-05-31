@@ -9,6 +9,11 @@ export const handleDelete = ({
   limit: number;
   offset: number;
 }) => {
-  deleteMeterById(id).then((res) => console.log(res));
-  meterStore.fetchMetersPage({ limit, offset });
+  deleteMeterById(id)
+    .then(() => {
+      meterStore.updateMetersPage({ limit, offset });
+    })
+    .catch((e) => {
+      console.error(e);
+    });
 };

@@ -10,7 +10,7 @@ const getOptions = {
   },
 };
 
-export const fetchMeters = (props: {
+export const fetchMetersPage = (props: {
   params: {
     limit: number;
     offset: number;
@@ -25,13 +25,7 @@ export const fetchMeters = (props: {
 };
 
 export const deleteMeterById = (id: string) => {
-  return axiosInstance
-    .delete(`meters/${id}`)
-    .then((response) => {
-      console.log(response);
-      console.log(`Deleted post with ID ${id}`);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  return axiosInstance.delete(`meters/${id}`).catch((error) => {
+    console.error(error);
+  });
 };

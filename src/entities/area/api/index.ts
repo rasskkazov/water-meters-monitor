@@ -1,5 +1,6 @@
 import { PaginationResponse } from "@/shared/api/types";
 import { axiosInstance } from "@/shared/api/axiosInstance";
+
 import { TArea } from "../model/type";
 
 const options = {
