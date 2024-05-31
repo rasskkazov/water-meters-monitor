@@ -6,14 +6,11 @@ import { MeterCard } from './MetersCard/ui/MeterCard';
 import { useMetersBoard } from '../model/useMetersBoard';
 import * as classes from './MeterBoard.module.scss';
 
-const limit = 20;
-
-export const MetersBoard = observer(() => {
+export const MetersBoard = observer(({ limit }: { limit: number }) => {
   const { page, handlePageClick } = useMetersBoard({ limit });
 
   return (
     <div className={classes.metersBoard}>
-      {!meterStore.isDataReady && <div>Загрузка...</div>}
       <header className={classes.metersBoard__header}>
         <h4>№</h4>
         <h4>Тип</h4>
