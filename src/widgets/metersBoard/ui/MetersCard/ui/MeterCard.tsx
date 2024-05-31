@@ -69,7 +69,9 @@ export const MeterCard = ({
       <div
         className={`${classes.meterCard__del}${delVisible ? '--visible' : ''}`}
       >
-        <DeleteMeter id={meterId} limit={limit} offset={offset} />
+        {delVisible && (
+          <DeleteMeter id={meterId} limit={limit} offset={offset} />
+        )}
       </div>
     </div>
   );
