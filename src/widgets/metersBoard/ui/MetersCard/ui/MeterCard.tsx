@@ -4,6 +4,7 @@ import { stringToRussianDate } from "@/shared/lib/stringToRussianDate";
 
 import { useArea } from "../../../model/useArea";
 import * as classes from "./MeterCard.module.scss";
+import { useState } from "react";
 
 const MeterTypes = {
   HotWaterAreaMeter: "ГВС",
@@ -42,13 +43,17 @@ export const MeterCard = ({
   description: string;
 }) => {
   const { data, isLoading } = useArea(areaId);
-
+  const [delVisible, setDelVisible] = useState(false);
   if (isLoading) return <div className={classes.meterCard}>Загрузка...</div>;
 
   return (
-    <div className={classes.meterCard}>
+    <div
+      className={classes.meterCard}
+      onMouseEnter={() => setDelVisible(true)}
+      onMouseLeave={() => setDelVisible(false)}
+    >
       <div className="meterCard__orderNumber">{orderNumber}</div>
-      <div className="meterCard__type">
+      <div className={classes.meterCard__type}>
         <Water color={MeterTypesIconsColor[type as keyof typeof MeterTypes]} />
         {MeterTypes[type as keyof typeof MeterTypes]}
       </div>
@@ -60,8 +65,12 @@ export const MeterCard = ({
       <div className="meterCard__address">
         {`${data.house.address} ${data.str_number_full}`}
       </div>
-      <div className="meterCard__description">{description}</div>
-      <DeleteMeter id={meterId} limit={limit} offset={offset} />
+      <div className={classes.meterCard__description}>{description}</div>
+      <div
+        className={`${classes.meterCard__del}${delVisible ? "--visible" : ""}`}
+      >
+        <DeleteMeter id={meterId} limit={limit} offset={offset} />
+      </div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { meterStore } from "@/entities";
 
 import { MeterCard } from "./MetersCard/ui/MeterCard";
 import { useMetersBoard } from "../model/useMetersBoard";
+import * as classes from "./MeterBoard.module.scss";
 
 const limit = 20;
 
@@ -11,9 +12,18 @@ export const MetersBoard = observer(() => {
   const { page, handlePageClick } = useMetersBoard({ limit });
 
   return (
-    <div className="metersBoard">
+    <div className={classes.metersBoard}>
       {!meterStore.isDataReady && <div>Загрузка...</div>}
-      <div className="content">
+      <header className={classes.metersBoard__header}>
+        <h4>№</h4>
+        <h4>Тип</h4>
+        <h4>Дата установки</h4>
+        <h4>Автоматический</h4>
+        <h4>Текущие показания</h4>
+        <h4>Адрес</h4>
+        <h4>Примечания</h4>
+      </header>
+      <div className={classes.metersBoard__content}>
         {meterStore.isDataReady && (
           <>
             {meterStore.meters.map((meter, index) => (
@@ -34,13 +44,15 @@ export const MetersBoard = observer(() => {
             ))}
           </>
         )}
+      </div>
+      <footer className={classes.metersBoard__footer}>
         {meterStore.isCountReady && (
           <Pagination
             count={Math.ceil(meterStore.count / limit)}
             handlePageClick={handlePageClick}
           />
         )}
-      </div>
+      </footer>
     </div>
   );
 });

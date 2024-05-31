@@ -1,4 +1,46 @@
+@import "@/shared/styles";
+
 .meterCard {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 4.8rem 12rem 16rem 12.8rem 14.6rem 1fr 31.2rem 6.4rem;
+  min-height: 5.2rem;
+  font-weight: 500;
+  font-size: 1.4rem;
+  background-color: $grey50;
+  background-color: $white;
+  border-bottom: 1px solid $grey;
+  border-radius: inherit;
+  transition: 0.1s;
+
+  @include hover() {
+    background-color: $grey50;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    padding: 0 1.2rem;
+  }
+
+  &__type {
+    gap: 0.8rem;
+
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+
+  &__description {
+    color: $grey500;
+  }
+
+  &__del {
+    visibility: hidden;
+
+    &--visible {
+      visibility: visible;
+    }
+  }
 }
