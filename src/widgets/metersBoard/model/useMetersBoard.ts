@@ -5,7 +5,7 @@ export const useMetersBoard = ({ limit }: { limit: number }) => {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    meterStore.init({ limit, offset: 0 });
+    meterStore.updatePageCount({ limit, offset: 0 });
     meterStore.updateMetersPage({ limit, offset: 0 });
   }, []);
 

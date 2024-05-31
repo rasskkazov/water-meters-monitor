@@ -26,7 +26,10 @@ const MeterStore = t
         self.isDataReady = true;
       }
     }),
-    init: flow(function* (params: { limit: number; offset: number }) {
+    updatePageCount: flow(function* (params: {
+      limit: number;
+      offset: number;
+    }) {
       self.isCountReady = false;
       try {
         self.count = yield fetchMetersPage({ params }).then(
