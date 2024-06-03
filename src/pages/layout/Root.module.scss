@@ -1,6 +1,8 @@
 @import '@/shared/styles';
 
 .main {
+  display: flex;
+  justify-content: center;
   min-height: 100vh;
   background-color: $grey50;
 }
